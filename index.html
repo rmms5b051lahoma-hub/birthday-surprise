@@ -1,1 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Supu ♡</title>
 
+<style>
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #fff5f0;
+  color: #80565c;
+  font-family: Georgia, serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 85vh;
+  padding: 75px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: clamp(40px, 9vw, 65px);
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 30px;
+}
+
+p { line-height: 1.9; }
+
+button {
+  border: 1px solid #dca5ac;
+  background: #eec4c7;
+  color: #744950;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 8px;
+  transition: .3s;
+}
+
+button:hover {
+  background: #f8d9da;
+  transform: translateY(-3px);
+}
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(145deg,#fff8f3,#f5dce0,#fcece7);
+}
+
+.small {
+  letter-spacing: 4px;
+  font-size: 11px;
+}
+
+.heart {
+  font-size: 55px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.18); }
+}
+
+.card {
+  background: #fffaf6;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 470px;
+  width: 100%;
+  box-shadow: 0 8px 30px #c9979730;
+  margin: 15px auto;
+}
+
+.divider {
+  color: #c98e98;
+  letter-spacing: 8px;
+  margin: 15px;
+}
+
+#musicBox {
+  display: none;
+  width: 100%;
+  max-width: 350px;
+  margin: 15px auto;
+}
+
+#musicBox iframe {
+  width: 100%;
+  height: 200px;
+  border: 0;
+  border-radius: 15px;
+}
+
+.heart-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 400px;
+}
+
+.secret-heart {
+  background: #f9e0e1;
+  border: none;
+  font-size: 35px;
+  padding: 12px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 18px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.photo-card {
+  background: white;
+  padding: 10px 10px 18px;
+  box-shadow: 0 5px 18px #bd929240;
+  transform: rotate(-2deg);
+}
+
+.photo-card:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  display: block;
+  background: #f2dfe0;
+}
+
+.caption {
+  font-size: 13px;
+  margin: 12px 2px 0;
+  line-height: 1.5;
+}
+
+.envelope {
+  font-size: 90px;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.envelope:hover {
+  transform: scale(1.12) rotate(-5deg);
+}
+
+#letter {
+  display: none;
+  text-align: left;
+  line-height: 2;
+  animation: appear 1s;
+  white-space: normal;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cake {
+  font-size: 110px;
+  animation: heartbeat 2s infinite;
+}
+
+#candles {
+  font-size: 30px;
+}
+
+#final {
+  display: none;
+  animation: appear 1s;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #63404799;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#popup .card {
+  animation: appear .5s;
+}
+
+footer {
+  background: #f7e3df;
+  padding: 30px 15px;
+  font-size: 13px;
+}
+
+.falling {
+  position: fixed;
+  top: -30px;
+  z-index: 200;
+  pointer-events: none;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(700deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width:380px) {
+  .photo-card img { height: 130px; }
+  section { padding: 55px 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME -->
+
+<section class="hero" id="home">
+  <p class="small">A LITTLE WORLD MADE JUST FOR YOU</p>
+  <div class="heart">♡</div>
+  <h1>Happy Birthday,<br>My Supu</h1>
+  <p>To my favourite person in every universe.</p>
+
+  <button onclick="begin()">Open your surprise ♡</button>
+
+  <p style="font-size:12px;margin-top:35px">
+    Made with all my love.
+  </p>
+</section>
+
+<!-- MUSIC -->
+
+<section id="music">
+  <p class="small">A SONG FOR YOU</p>
+  <h2>Press play, birthday boy ♡</h2>
+  <p>There's a little song that reminds me of you.</p>
+
+  <button onclick="playMusic()">♫ Play Haareya</button>
+  <button onclick="pauseMusic()">Pause music</button>
+
+  <div id="musicBox">
+    <iframe
+      id="musicFrame"
+      title="Haareya"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <p style="font-size:12px">
+      If the player doesn't work,
+      <a href="https://www.youtube.com/watch?v=TyMUY2CDrjc"
+         target="_blank">listen on YouTube ♡</a>
+    </p>
+  </div>
+</section>
+
+<!-- HIDDEN HEARTS -->
+
+<section>
+  <p class="small">A FEW LITTLE SECRETS</p>
+  <h2>For you, Supu ♡</h2>
+  <p>There are little things I want you to remember.</p>
+  <p>Tap each heart to discover one.</p>
+
+  <div class="heart-grid">
+    <button class="secret-heart" onclick="secret(0)">♡</button>
+    <button class="secret-heart" onclick="secret(1)">♡</button>
+    <button class="secret-heart" onclick="secret(2)">♡</button>
+    <button class="secret-heart" onclick="secret(3)">♡</button>
+    <button class="secret-heart" onclick="secret(4)">♡</button>
+  </div>
+
+  <p style="font-size:12px">Five little reminders, just for you.</p>
+</section>
+
+<!-- PHOTOGRAPHS -->
+
+<section id="memories">
+  <p class="small">OUR LITTLE UNIVERSE</p>
+  <h2>Pieces of us ♡</h2>
+  <p>Six pictures. A million feelings.</p>
+
+  <div class="gallery">
+
+    <div class="photo-card">
+      <img src="photo1.jpg" alt="Our laughter">
+      <div class="caption">
+        A genuine laughter with my favourite person.
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="photo2.jpg" alt="Us together">
+      <div class="caption">
+        Just us, and that's enough.
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="photo3.jpg" alt="Looking at each other">
+      <div class="caption">
+        Caught looking at my favourite view.
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="photo4.jpg" alt="His arm around my shoulder">
+      <div class="caption">
+        A little closer, a little happier.
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="photo5.jpg" alt="My hand on his shoulder">
+      <div class="caption">
+        Just casually claiming my favourite person.
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="photo6.jpg" alt="Supu as a child">
+      <div class="caption">
+        Little Supu, big place in my heart.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LETTER -->
+
+<section>
+  <p class="small">SOMETHING FROM MY HEART</p>
+  <h2>A letter for you</h2>
+
+  <p>There's something waiting inside this envelope.</p>
+
+  <div class="envelope" onclick="openLetter()">💌</div>
+  <button onclick="openLetter()">Open your letter ♡</button>
+
+  <div class="card" id="letter">
+
+    <h2 style="text-align:center">To my Supu, ♡</h2>
+
+    <p>
+      Happy Birthday, my love!
+      <br><br>
+
+      I am always so proud of you. You're genuinely the best person
+      I have ever met, and I'm so grateful to have you in my life.
+      <br><br>
+
+      Thank you for being constant in my life, for being you,
+      and for making so many ordinary moments feel special.
+      <br><br>
+
+      I will always adore you, in every universe, in every lifetime.
+      <br><br>
+
+      And please, always stay the way you are. Never lose that
+      beautiful, silly side of yours. I love every version of you,
+      every little bit of your stupidity, and every side that
+      makes you YOU.
+      <br><br>
+
+      I love you. More than words could ever explain.
+      <br><br>
+
+      Always yours. ♡
+    </p>
+
+  </div>
+</section>
+
+<!-- BIRTHDAY CAKE -->
+
+<section>
+  <p class="small">THE MOST IMPORTANT PART</p>
+  <h2>It's your special day!</h2>
+
+  <div class="cake">🎂</div>
+
+  <div id="candles">🕯️ 🕯️ 🕯️</div>
+
+  <p>Close your eyes, birthday boy.</p>
+  <h2>Make a wish, Supu! ✨</h2>
+
+  <button onclick="blowCandles()">
+    Blow out the candles ♡
+  </button>
+
+  <div id="final">
+    <h2>Your wish is sent! ✨</h2>
+    <p>May life always be as beautiful as the happiness you bring.</p>
+    <button onclick="lastSurprise()">
+      One last surprise 💗
+    </button>
+  </div>
+</section>
+
+<footer>
+  Made with love, just for Supu.
+  <br><br>
+  In this universe and every other one. ♡
+</footer>
+
+<!-- POPUP -->
+
+<div id="popup">
+  <div class="card">
+    <div style="font-size:35px">♡</div>
+    <h2 id="popupTitle">A little secret</h2>
+    <p id="popupText"></p>
+    <button onclick="closePopup()">Close ♡</button>
+  </div>
+</div>
+
+<script>
+
+const messages = [
+  "You are my favourite notification, my favourite person and my favourite everything. ♡",
+
+  "A little reminder that you are loved more than you know.",
+
+  "If I could choose again, I'd still choose you. Every single time.",
+
+  "You make even the most ordinary days feel worth remembering.",
+
+  "Never forget that somewhere, someone is always so incredibly proud of you. That someone is me. ♡"
+];
+
+function begin() {
+  document.getElementById("music").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function playMusic() {
+  const box = document.getElementById("musicBox");
+  const frame = document.getElementById("musicFrame");
+
+  box.style.display = "block";
+
+  if (!frame.src) {
+    frame.src =
+    "https://www.youtube-nocookie.com/embed/TyMUY2CDrjc?autoplay=1&playsinline=1";
+  }
+}
+
+function pauseMusic() {
+  const frame = document.getElementById("musicFrame");
+  frame.src = "";
+  document.getElementById("musicBox").style.display = "none";
+}
+
+function secret(index) {
+  document.getElementById("popupTitle").innerText =
+  "A little reminder ♡";
+
+  document.getElementById("popupText").innerText =
+  messages[index];
+
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function openLetter() {
+  const letter = document.getElementById("letter");
+  letter.style.display = "block";
+
+  letter.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function blowCandles() {
+  document.getElementById("candles").innerText = "✨ ✨ ✨";
+
+  document.getElementById("final").style.display = "block";
+
+  confetti();
+
+  document.getElementById("final").scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+}
+
+function lastSurprise() {
+  document.getElementById("popupTitle").innerText =
+  "One last thing, Supu ♡";
+
+  document.getElementById("popupText").innerText =
+  "If I could choose my favourite person in every universe, I'd still choose you. Happy Birthday, my love. I love you! ♡";
+
+  document.getElementById("popup").style.display = "flex";
+
+  confetti();
+}
+
+function confetti() {
+  const symbols = ["💗","💕","✨","🌸","♡","🎀"];
+
+  for(let i=0;i<55;i++) {
+    const el = document.createElement("div");
+
+    el.className = "falling";
+
+    el.innerText =
+    symbols[Math.floor(Math.random()*symbols.length)];
+
+    el.style.left = Math.random()*100 + "vw";
+
+    el.style.animationDelay = Math.random()*2 + "s";
+
+    el.style.fontSize = (15+Math.random()*20) + "px";
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>el.remove(),6000);
+  }
+}
+
+</script>
+
+</body>
+</html>

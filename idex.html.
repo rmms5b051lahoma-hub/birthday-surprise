@@ -310,42 +310,42 @@ footer {
   <div class="gallery">
 
     <div class="photo-card">
-      <img src="images/photo1.jpg" alt="Our laughter">
+      <img src="photo1.jpg" alt="Our laughter">
       <div class="caption">
         A genuine laughter with my favourite person.
       </div>
     </div>
 
     <div class="photo-card">
-      <img src="images/photo2.jpg" alt="Us together">
+      <img src="photo2.jpg" alt="Us together">
       <div class="caption">
         Just us, and that's enough.
       </div>
     </div>
 
     <div class="photo-card">
-      <img src="images/photo3.jpg" alt="Looking at each other">
+      <img src="photo3.jpg" alt="Looking at each other">
       <div class="caption">
         Caught looking at my favourite view.
       </div>
     </div>
 
     <div class="photo-card">
-      <img src="images/photo4.jpg" alt="His arm around my shoulder">
+      <img src="photo4.jpg" alt="His arm around my shoulder">
       <div class="caption">
         A little closer, a little happier.
       </div>
     </div>
 
     <div class="photo-card">
-      <img src="images/photo5.jpg" alt="My hand on his shoulder">
+      <img src="photo5.jpg" alt="My hand on his shoulder">
       <div class="caption">
         Just casually claiming my favourite person.
       </div>
     </div>
 
     <div class="photo-card">
-      <img src="images/photo6.jpg" alt="Supu as a child">
+      <img src="photo6.jpg" alt="Supu as a child">
       <div class="caption">
         Little Supu, big place in my heart.
       </div>
